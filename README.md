@@ -6,16 +6,16 @@ Udacity-tournament-database is a simple database project completed for Udacity's
 
 To use the project files to setup a swiss-system tournament, follow the below steps.
 
-1. Download or clone files
+#### Download or clone files
 
-2. Create Database
+#### Create Database
 
-Log into your Postgres console and create a new database, for example:
+Log into your Postgres console and create a new database:
 CREATE DATABASE tournament
 
-3. Create Tables
+#### Create Tables
 
-Two database tables will be required. The first table is to track the players in the tournament (this can be used for individual players or teams). The second table is to track matches within the tournament. The create table statements (see below) are also provided in the tournament.sql file.
+Two database tables will be required and are in database sql.
 ```
 CREATE TABLE players (
   ID serial PRIMARY KEY,
@@ -30,13 +30,13 @@ CREATE TABLE matches (
 );
 ```
 
-4. Import Functions
+#### Import Functions
 
 To use the tournament functions, import tournament.py into your python script.
 
 import tournament
 
-5. Use Functions
+#### Use Functions
 
 The following functions are included in tournament.py for you to use in running a swiss-system tournament.
 
