@@ -10,7 +10,7 @@
 DROP VIEW IF EXISTS standings;
 DROP VIEW IF EXISTS players_wins;
 DROP VIEW IF EXISTS players_loses;
-DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS players;
 
 create table players(
@@ -28,15 +28,15 @@ create table matches(
 
 create view players_loses as
 select players.id as ID, COALESCE(count(ID_loser),0) as times
-from players LEFT JOIN games
-ON players.id = games.ID_loser
+from players LEFT JOIN matches
+ON players.id = matches.ID_loser
 group by players.id
 order by times DESC;
 
 create view players_wins as
 select players.id as ID, COALESCE(count(ID_winner),0) as times
-from players LEFT JOIN games
-ON players.id = games.ID_winner
+from players LEFT JOIN matches
+ON players.id = matches.ID_winner
 group by players.id
 order by times DESC;
 
