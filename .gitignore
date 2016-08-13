@@ -1,3 +1,4 @@
 .idea/
 /.vagrant/
 /Vagrantfile
+/pg_config.sh
