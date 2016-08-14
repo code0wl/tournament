@@ -32,16 +32,18 @@ CREATE TABLE matches (
 );
 ```
 
-#### Import Functions
-
-To use the tournament functions, import tournament.py into your python script.
-
-import tournament
-
-#### Use Functions
-After importing tournament you can use the functions found in that file.
-
 #### CLI test
+##### Make sure database exists
+```
+vagrant@vagrant-ubuntu-trusty-32:/vagrant/tournament$ psql
+psql (9.3.5)
+Type "help" for help.
+
+vagrant=> CREATE DATABASE tournament;
+CREATE DATABASE
+vagrant=> \q
+```
+
 Make sure vagrant is running correctly and then run the following command to run the tests
 ssh into your vagrant environment and navigate to vagrant/tournament. After that run the following command
 - important: Make sure you are running python 3 and not 2
