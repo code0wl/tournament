@@ -18,15 +18,17 @@ CREATE DATABASE tournament
 Two database tables will be required and are in database sql.
 ```
 CREATE TABLE players (
-  ID serial PRIMARY KEY,
-  player_name varchar(255)
+    name TEXT,
+    ID   SERIAL,
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE matches (
-  ID serial PRIMARY KEY,
-  player1 integer references Players(ID),
-  player2 integer references Players(ID),
-  winner integer references Players(ID)
+    ID_winner SERIAL REFERENCES players (ID),
+    ID_loser  SERIAL REFERENCES players (ID),
+    match_ID  SERIAL,
+    result    INT,
+    PRIMARY KEY (match_ID)
 );
 ```
 
@@ -38,3 +40,11 @@ import tournament
 
 #### Use Functions
 After importing tournament you can use the functions found in that file.
+
+#### CLI test
+Make sure vagrant is running correctly and then run the following command to run the tests
+ssh into your vagrant environment and navigate to vagrant/tournament. After that run the following command
+```
+python tournament_test.py
+```
+
