@@ -44,6 +44,7 @@ After importing tournament you can use the functions found in that file.
 #### CLI test
 Make sure vagrant is running correctly and then run the following command to run the tests
 ssh into your vagrant environment and navigate to vagrant/tournament. After that run the following command
+- important: Make sure you are running python 3 and not 2
 ```
 python tournament_test.py
 ```
