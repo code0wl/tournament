@@ -11,43 +11,13 @@ To use the project files to setup a swiss-system tournament, follow the below st
 #### Create Database
 
 Log into your Postgres console and create a new database:
-CREATE DATABASE tournament
+CREATE DATABASE tournament and run tests by following these instructions:
 
-#### Create Tables
-
-Two database tables will be required and are in database sql.
-```
-CREATE TABLE players (
-    name TEXT,
-    ID   SERIAL,
-    PRIMARY KEY (ID)
-);
-
-CREATE TABLE matches (
-    ID_winner SERIAL REFERENCES players (ID),
-    ID_loser  SERIAL REFERENCES players (ID),
-    match_ID  SERIAL,
-    result    INT,
-    PRIMARY KEY (match_ID)
-);
-```
-
-#### CLI test
-##### Make sure database exists
-```
-vagrant@vagrant-ubuntu-trusty-32:/vagrant/tournament$ psql
-psql (9.3.5)
-Type "help" for help.
-
-vagrant=> CREATE DATABASE tournament;
-CREATE DATABASE
-vagrant=> \q
-```
-
-Make sure vagrant is running correctly and then run the following command to run the tests
-ssh into your vagrant environment and navigate to vagrant/tournament. After that run the following command
-- important: Make sure you are running python 3 and not 2
-```
-python tournament_test.py
-```
+####After following the guidelines in project description and setting up the environment and vagrant vm using vagrant up followed by vagrant ssh
+1. Navigate to tournament project folder cd /vagrant/tournament
+1. Write psql to go to PostgreSQL
+1. Run \i tournament.sql to create and import the tournament database schema.
+1. Once the database has been setup, quit the PostgreSQL interface using \q
+1. Execute the following command python tournament_test.py to test the methods implemented in tournament.py
+1. Test results will be printed on the screen.
 

@@ -24,10 +24,9 @@ CREATE TABLE players (
 );
 
 CREATE TABLE matches (
-    ID_winner SERIAL REFERENCES players (ID),
-    ID_loser  SERIAL REFERENCES players (ID),
+    ID_winner INT REFERENCES players (ID),
+    ID_loser  INT REFERENCES players (ID),
     match_ID  SERIAL,
-    result    INT,
     PRIMARY KEY (match_ID)
 );
 

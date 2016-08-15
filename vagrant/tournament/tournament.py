@@ -13,7 +13,8 @@ def connect(database_name="tournament"):
         cursor = db.cursor()
         return db, cursor
     except:
-        print("Something went wrong with connecting to tournament")
+        print
+        "Something went wrong with connecting to tournament"
 
 
 def deleteMatches():
@@ -38,9 +39,7 @@ def countPlayers():
     cursor.execute("SELECT COALESCE(count(*),0) FROM players")
     rows = cursor.fetchone()
     db.close()
-    for row in rows:
-        result = row[0]
-    return result
+    return rows[0]
 
 
 def registerPlayer(name):
@@ -88,7 +87,7 @@ def reportMatch(winner, loser):
       loser:  the id number of the player who lost
     """
     db, cursor = connect()
-    cursor.execute("INSERT INTO matches (winner, loser) "
+    cursor.execute("INSERT INTO matches (ID_winner, ID_loser) "
                    "VALUES (%s, %s)", (winner, loser,))
     db.commit()
     db.close()
@@ -110,15 +109,7 @@ def swissPairings():
         name2: the second player's name
     """
     standings = playerStandings()
-    num = int(countPlayers())
-    pairings = []
-    if num > 0:
-        for i in range(num):
-            if i % 2 == 0:
-                id1 = standings[i][0]
-                name1 = standings[i][1]
-                id2 = standings[i + 1][0]
-                name2 = standings[i + 1][1]
-                pair = (id1, name1, id2, name2)
-                pairings.append(pair)
-    return pairings
+    next_round = []
+    for i in range(0, len(standings), 2):
+        next_round.append((standings[i][0], standings[i][1], standings[i + 1][0], standings[i + 1][1]))
+    return next_round
